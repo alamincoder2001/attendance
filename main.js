@@ -43,7 +43,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1200,
         height: 800,
-        webPreferences: { nodeIntegration: true, contextIsolation: false }
+        webPreferences: { nodeIntegration: true, contextIsolation: true }
     });
 
     checkServerReady('http://127.0.0.1:8000', () => {

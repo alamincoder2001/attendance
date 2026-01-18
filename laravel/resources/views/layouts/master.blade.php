@@ -28,6 +28,7 @@
 
     <!-- Main CSS-->
     <link href="{{asset('backend')}}/css/theme.css" rel="stylesheet" media="all">
+    @stack("style")
 
 </head>
 
@@ -112,6 +113,7 @@
     <script src="{{asset('backend')}}/js/swiper-bundle-12.0.3.min.js"></script>
     <script src="{{asset('backend')}}/js/aos.js"></script>
     <script src="{{asset('backend')}}/js/modern-plugins.js"></script>
+    @stack("script")
 
 </body>
 

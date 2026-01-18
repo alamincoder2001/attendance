@@ -14,7 +14,7 @@ class AttendanceController extends Controller
     public function index()
     {
         $attendances = getAttendance();
-        $userId = "100023";
+        $userId = null;
         $dateFrom = "2026-01-01";
         $dateTo = date('Y-m-d');
 

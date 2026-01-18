@@ -1,8 +1,8 @@
 {
   "name": "attendanceapp",
   "version": "1.0.0",
-  "main": "main.js",
   "private": true,
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder --win"
@@ -12,23 +12,21 @@
     "electron-builder": "^26.4.0"
   },
   "build": {
-    "appId": "attendanceapp.id",
-    "productName": "attendanceapp",
+    "extraResources": [
+      {
+        "from": "backend/laravel",
+        "to": "laravel"
+      },
+      {
+        "from": "backend/php",
+        "to": "php"
+      }
+    ],
     "directories": {
       "output": "dist"
     },
-    "files": [
-      "**/*"
-    ],
     "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ]
+      "target": "nsis"
     },
     "nsis": {
       "oneClick": false,

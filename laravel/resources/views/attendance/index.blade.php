@@ -20,7 +20,9 @@
                         <tr>
                             <th>Sl.</th>
                             <th>User ID</th>
-                            <th>Timestamp</th>
+                            <th>Date</th>
+                            <th>Day</th>
+                            <th>Time</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +30,9 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $attendance['id'] }}</td>
-                            <td>{{ $attendance['timestamp'] }}</td>
+                            <td>{{ date('d/m/Y', strtotime($attendance['timestamp'])) }}</td>
+                            <td>{{ date('l', strtotime($attendance['timestamp'])) }}</td>
+                            <td>{{ date('H:i:s', strtotime($attendance['timestamp'])) }}</td>
                         </tr>
                         @endforeach
                     </tbody>

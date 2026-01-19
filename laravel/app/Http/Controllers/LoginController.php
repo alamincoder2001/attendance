@@ -27,7 +27,7 @@ class LoginController extends Controller
         ]);
 
         if (auth()->attempt(credentials($request->username, $request->password))) {
-            return redirect()->intended('dashboard')->with('success', 'Login successful');
+            return redirect()->intended('device-dashboard')->with('success', 'Login successful');
         }
 
         return back()->withErrors([

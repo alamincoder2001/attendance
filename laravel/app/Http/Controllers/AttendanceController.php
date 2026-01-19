@@ -13,7 +13,8 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        $attendances = getAttendance();
+        $ip = session('device')->ipAddress ?? null;
+        $attendances = getAttendance($ip);
         $userId = null;
         $dateFrom = "2026-01-01";
         $dateTo = date('Y-m-d');
@@ -40,7 +41,8 @@ class AttendanceController extends Controller
 
     public function employee()
     {
-        $data['employees'] = getEmployee();
+        $ip = session('device')->ipAddress ?? null;
+        $data['employees'] = getEmployee($ip);
         return view('attendance.employee', $data);
     }
 }

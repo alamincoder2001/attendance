@@ -6,68 +6,52 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">overview</h2>
-                <button class="au-btn au-btn-icon au-btn--blue">
-                    <i class="zmdi zmdi-plus"></i>add item</button>
+                <h2 class="title-1">Dashboard</h2>
             </div>
         </div>
     </div>
-    <div class="row m-t-25">
-        <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c1">
-                <div class="overview__inner">
-                    <div class="overview-box clearfix" style="cursor: pointer;" onclick="location.href = '/employee'">
-                        <div class="icon">
-                            <i class="zmdi zmdi-account-o"></i>
-                        </div>
-                        <div class="text">
-                            <h2>{{ count(getEmployee()) }}</h2>
-                            <span>Total Employee</span>
+    <div class="row justify-content-center m-t-25">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">
+                        Total Employees
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <div class="mx-auto d-block">
+                        <i class="rounded-circle mx-auto d-block fas fa-users fa-5x"></i>
+                        <div class="location text-sm-center">
+                            <i>Total: </i> {{count($employees)}}
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c2">
-                <div class="overview__inner">
-                    <div class="overview-box clearfix d-flex align-items-center gap-2" style="cursor: pointer;" onclick="location.href = '/attendance'">
-                        <div class="icon">
-                            <i class="zmdi zmdi-calendar-note"></i>
-                        </div>
-                        <div class="text">
-                            <span>Today Attendance</span>
-                        </div>
-                    </div>
+                <div class="card-footer">
+                    <button type="button" onclick="location.href='/employee'" class="btn btn-primary w-100">
+                        <i class="fas fa-list"></i>&nbsp; Show Employees
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c3">
-                <div class="overview__inner">
-                    <div class="overview-box clearfix d-flex align-items-center gap-2" style="cursor: pointer;" onclick="location.href = '/attendance'">
-                        <div class="icon">
-                            <i class="zmdi zmdi-calendar-note"></i>
-                        </div>
-                        <div class="text">
-                            <span>Today Attendance</span>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">
+                        Attendance List
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <div class="mx-auto d-block">
+                        <i class="rounded-circle mx-auto d-block fas fa-list fa-5x"></i>
+                        <div class="location text-sm-center">
+                            ||
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c4">
-                <div class="overview__inner">
-                    <div class="overview-box clearfix d-flex align-items-center gap-2" style="cursor: pointer;" onclick="location.href = '/attendance'">
-                        <div class="icon">
-                            <i class="zmdi zmdi-calendar-note"></i>
-                        </div>
-                        <div class="text">
-                            <span>Today Attendance</span>
-                        </div>
-                    </div>
+                <div class="card-footer">
+                    <button type="button" onclick="location.href='/attendance'" class="btn btn-primary w-100">
+                        <i class="fas fa-list"></i>&nbsp; Show Attendance
+                    </button>
                 </div>
             </div>
         </div>

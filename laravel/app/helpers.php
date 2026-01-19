@@ -12,9 +12,9 @@ function credentials($username, $password)
     }
 }
 
-function getAttendance($ip = '192.168.0.234')
+function getAttendance($ip = '192.168.0.234', $port = 4370)
 {
-    $zk = new ZKTeco($ip);
+    $zk = new ZKTeco($ip, $port);
 
     if ($zk->connect()) {
         $allAttendance = $zk->getAttendance();
@@ -24,9 +24,9 @@ function getAttendance($ip = '192.168.0.234')
     }
 }
 
-function getEmployee($ip = '192.168.0.234')
+function getEmployee($ip = '192.168.0.234', $port = 4370)
 {
-    $zk = new ZKTeco($ip);
+    $zk = new ZKTeco($ip, $port);
 
     if ($zk->connect()) {
         $allEmployee = $zk->getUser();

@@ -7,15 +7,15 @@
         <div class="col-md-12">
             <div class="overview-wrap">
                 <h2 class="title-1">overview</h2>
-                <button class="au-btn au-btn-icon au-btn--blue">
+                <button type="button" onclick="location.href='/dashboard'" class="au-btn au-btn-icon au-btn--blue">
                     <i class="zmdi zmdi-home"></i>Back To Dashboard</button>
             </div>
         </div>
     </div>
     <div class="row m-t-25">
-        <div class="col-sm-6 col-lg-12">
+        <div class="col-12 col-md-12">
             <div class="row">
-                <div class="col-sm-12 col-md-3 mb-1">
+                <div class="col-12 col-sm-6 col-md-3 mb-1">
                     <input type="search" oninput="searchData()" class="form-control shadow-none rounded" placeholder="Search...">
                 </div>
             </div>
@@ -29,9 +29,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($employees as $key => $employee)
+                        @php $key = 0; @endphp
+                        @foreach($employees as $employee)
                         <tr>
-                            <td>{{ $key + 1 }}</td>
+                            <td>{{ ++$key }}</td>
                             <td>{{ $employee['userid'] }}</td>
                             <td>{{ $employee['name'] }}</td>
                         </tr>

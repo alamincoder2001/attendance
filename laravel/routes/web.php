@@ -1,9 +1,14 @@
 <?php
 
-use App\Http\Controllers\AttendanceController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\AttendanceController;
+
+Route::fallback(function () {
+    return view('layouts.404');
+})->middleware('auth');
 
 // login route
 Route::get('/', [LoginController::class, 'index'])->name('showLoginForm');
@@ -13,7 +18,15 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
 // dashboard route
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/{id?}', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/device-dashboard', [HomeController::class, 'deviceDashboard'])->name('device.dashboard');
+
+// device routes
+Route::get('/device', [DeviceController::class, 'create'])->name('device.create');
+Route::match(['get', 'post'], '/get-device', [DeviceController::class, 'index'])->name('device.index');
+Route::post('/add-device', [DeviceController::class, 'store'])->name('device.store');
+Route::post('/update-device', [DeviceController::class, 'update'])->name('device.update');
+Route::post('/delete-device', [DeviceController::class, 'destroy'])->name('device.destroy');
 
 // attendance routes
 Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');

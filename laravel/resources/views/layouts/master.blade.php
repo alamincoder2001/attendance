@@ -41,7 +41,7 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <a href="{{ route('dashboard') }}" class="form-header">
+                            <a href="{{ route('device.dashboard') }}" class="form-header">
                                 <i class="fas fa-home"></i>
                             </a>
                             <div class="header-button">

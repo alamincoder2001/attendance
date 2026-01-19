@@ -35,3 +35,4 @@ Route::post('/delete-device', [DeviceController::class, 'destroy'])->name('devic
 // attendance routes
 Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
 Route::get('/employee', [AttendanceController::class, 'employee'])->name('employee');
+Route::match(['get', 'post'], '/attendance-process', [AttendanceController::class, 'deviceAttendanceProcess'])->name('attendance.process');

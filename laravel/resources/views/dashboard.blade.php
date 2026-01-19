@@ -55,6 +55,29 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">
+                        Device Attendance Process
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <div class="mx-auto d-block">
+                        <i class="rounded-circle mx-auto d-block fas fa-spinner fa-5x"></i>
+                        <div class="location text-sm-center">
+                            ||
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" onclick="location.href='/attendance-process'" class="btn btn-primary w-100">
+                        <i class="fas fa-spinner"></i>&nbsp; Process Attendance
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

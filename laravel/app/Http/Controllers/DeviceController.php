@@ -51,7 +51,7 @@ class DeviceController extends Controller
             $data = Device::where('id', $request->id)->withTrashed()->first();
             $dataKeys = $request->except('_token', 'id');
             $data->fill($dataKeys);
-            $data->save();
+            $data->update();
             return response()->json(['success' => true, 'message' => 'Device updated successfully']);
         } catch (\Throwable $th) {
             return response()->json(['success' => false, 'message' => 'Something went wrong']);

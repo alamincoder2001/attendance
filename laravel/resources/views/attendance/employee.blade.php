@@ -16,7 +16,7 @@
         <div class="col-12 col-md-12">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3 mb-1">
-                    <input type="search" oninput="searchData()" class="form-control shadow-none rounded" placeholder="Search...">
+                    <input type="search" oninput="searchData()" class="form-control rounded" placeholder="Search...">
                 </div>
             </div>
             <div class="table-responsive table--no-card m-b-30">

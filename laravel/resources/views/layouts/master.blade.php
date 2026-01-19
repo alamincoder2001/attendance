@@ -48,7 +48,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="{{ asset('backend/images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                            <img src="{{ asset('nouser.png') }}" alt="{{auth()->user()->name}}" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">{{auth()->user()->name}}</a>
@@ -57,7 +57,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="{{ asset('backend/images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                                        <img src="{{ asset('nouser.png') }}" alt="{{auth()->user()->name}}" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -67,10 +67,16 @@
                                                     <span class="email">{{auth()->user()->email}}</span>
                                                 </div>
                                             </div>
+                                            <!-- <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{ route('company.profile') }}">
+                                                        <i class="fas fa-cog"></i>Company Profile</a>
+                                                </div>
+                                            </div> -->
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                     <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Profile</a>
+                                                        <i class="fas fa-user"></i>Profile</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">

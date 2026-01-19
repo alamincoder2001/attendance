@@ -33,6 +33,10 @@
                             <label for="port" class="form-control-label">Port</label>
                             <input type="text" id="port" name="port" class="form-control shadow-none">
                         </div>
+                        <div class="form-group mb-2">
+                            <label for="serial_number" class="form-control-label">Serial Number</label>
+                            <input type="text" id="serial_number" name="serial_number" class="form-control shadow-none">
+                        </div>
                         <div class="form-group text-end">
                             <button type="submit" class="btn btn-primary">Save Data</button>
                         </div>
@@ -55,6 +59,7 @@
                             <th>Type</th>
                             <th>Port</th>
                             <th>IpAddress</th>
+                            <th>Serial</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -67,6 +72,7 @@
                             <td>{{ $device->type }}</td>
                             <td>{{ $device->port }}</td>
                             <td>{{ $device->ipAddress }}</td>
+                            <td>{{ $device->serial_number }}</td>
                             <td>
                                 <button type="button" onclick="editData({{ $device }})" class="btn btn-sm btn-primary">Edit</button>
                                 <button type="button" onclick="deleteData({{$device->id}})" class="btn btn-sm btn-danger">
@@ -197,6 +203,10 @@
                                 <label class="form-label">Port</label>
                                 <input type="text" id="editPort" class="form-control" value="${device.port}">
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">Serial Number</label>
+                                <input type="text" id="editSerialNumber" class="form-control" value="${device.serial_number}">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -215,8 +225,9 @@
         let name = document.getElementById('editName').value;
         let ipAddress = document.getElementById('editIpAddress').value;
         let port = document.getElementById('editPort').value;
+        let serialNumber = document.getElementById('editSerialNumber').value;
 
-        if (!name || !ipAddress || !port) {
+        if (!name || !ipAddress || !port || !serialNumber) {
             alert('Please fill all fields');
             return;
         }
@@ -231,7 +242,8 @@
                     id: deviceId,
                     name: name,
                     ipAddress: ipAddress,
-                    port: port
+                    port: port,
+                    serial_number: serialNumber
                 })
             })
             .then(response => response.json())

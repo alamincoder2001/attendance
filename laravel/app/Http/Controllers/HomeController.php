@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompanyProfile;
 use App\Models\Device;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -30,6 +32,21 @@ class HomeController extends Controller
     public function deviceDashboard()
     {
         return view('device_dashboard');
+    }
+
+
+    // Company Profile
+    public function companyProfile(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $data = CompanyProfile::first();
+            $dataKeys = $request->except('_token');
+            $data->fill($dataKeys);
+            $data->update();
+            return redirect()->back()->with('success', 'Company profile updated successfully');
+        } else {
+            return view('company_profile');
+        }
     }
 
     public function logout()

@@ -21,6 +21,10 @@ Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::get('/dashboard/{id?}', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/device-dashboard', [HomeController::class, 'deviceDashboard'])->name('device.dashboard');
 
+// company profile route
+Route::get('/company-profile', [HomeController::class, 'companyProfile'])->name('company.profile');
+Route::post('/company-profile', [HomeController::class, 'companyProfile'])->name('company.profile.update');
+
 // device routes
 Route::get('/device', [DeviceController::class, 'create'])->name('device.create');
 Route::match(['get', 'post'], '/get-device', [DeviceController::class, 'index'])->name('device.index');

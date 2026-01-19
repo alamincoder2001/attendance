@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyProfile;
 use App\Models\Device;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,15 @@ class DatabaseSeeder extends Seeder
         Device::create([
             'name' => 'Device 1',
             'ipAddress' => '192.168.1.100'
+        ]);
+
+        CompanyProfile::create([
+            'name' => 'Company Name',
+            'domainIp' => '192.168.1.100',
+            'database' => 'mycompany_db',
+            'username' => 'dbuser',
+            'password' => 'dbpassword',
+            'ipAddress' => request()->ip()
         ]);
     }
 }

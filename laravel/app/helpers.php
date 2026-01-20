@@ -24,6 +24,8 @@ function getAttendance($ip = '192.168.0.234', $port = 4370)
 
         return $allAttendance;
     }
+
+    return [];
 }
 
 function getEmployee($ip = '192.168.0.234', $port = 4370)
@@ -35,6 +37,8 @@ function getEmployee($ip = '192.168.0.234', $port = 4370)
         $zk->disconnect();
         return $allEmployee;
     }
+
+    return [];
 }
 
 

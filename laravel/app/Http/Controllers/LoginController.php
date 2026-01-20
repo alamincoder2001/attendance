@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -27,6 +28,8 @@ class LoginController extends Controller
         ]);
 
         if (auth()->attempt(credentials($request->username, $request->password))) {
+            Device::query()->update(['status' => 'p']);
+            session()->forget('device');
             return redirect()->intended('device-dashboard')->with('success', 'Login successful');
         }
 

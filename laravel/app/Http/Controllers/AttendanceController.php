@@ -116,4 +116,63 @@ class AttendanceController extends Controller
             return response()->json(['message' => $e->getMessage()], 406);
         }
     }
+
+
+    // public function savedeviceAttendanceProcess(Request $request)
+    // {
+    //     DB::beginTransaction();
+    //     try {
+    //         $id = Session::get('device')->id ?? null;
+    //         $device = Device::where('id', $id)->first();
+    //         $attendances = getAttendance($device->ipAddress);
+    //         $dateFrom = $request->dateFrom;
+    //         $dateTo = $request->dateTo;
+
+    //         $signatures = array_values(array_filter($attendances, function ($log) use ($dateFrom, $dateTo) {
+    //             $logDate = date('Y-m-d', strtotime($log['timestamp']));
+    //             $condition = true;
+    //             if ($dateFrom !== null) {
+    //                 $condition = $condition && $logDate >= $dateFrom;
+    //             }
+    //             if ($dateTo !== null) {
+    //                 $condition = $condition && $logDate <= $dateTo;
+    //             }
+    //             return $condition;
+    //         }));
+
+    //         // $signatures  = [
+    //         //     [
+    //         //         'id' => 186,
+    //         //         'timestamp' => date('Y-m-d H:i:s')
+    //         //     ]
+    //         // ];
+
+    //         $details = [];
+
+    //         foreach ($signatures as $signature) {
+    //             $details[] = array(
+    //                 'DeviceId' => 1,
+    //                 'Pin' => $signature['id'],
+    //                 'DateTime' => $signature['timestamp'],
+    //                 'Verified' => 1,
+    //                 'Status' => 0,
+    //                 'WorkCode' => 0, 
+    //                 'RowDescription' => 'N/A',
+    //                 'RowStatus' => 'Active',
+    //                 'AddedTime' => date('Y-m-d H:i:s'),
+    //                 'AddedBy' => 1
+    //             );
+    //         }
+
+    //         if(count($details) > 0){
+    //             DB::connection('mysql')->table('tbl_device_signature')->insert($details);
+    //         }
+
+    //         DB::commit();
+    //         return response()->json(['message' => 'Attendance Processed']);
+    //     } catch (\Exception $e) {
+    //         DB::rollback();
+    //         return response()->json(['message' => $e->getMessage()], 406);
+    //     }
+    // }
 }

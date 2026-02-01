@@ -50,16 +50,21 @@ class AttendanceController extends Controller
         return view('attendance.employee', $data);
     }
 
+    public function attendanceProcess()
+    {
+        return view('attendance.process');
+    }
 
-    public function deviceAttendanceProcess(Request $request)
+
+    public function savedeviceAttendanceProcess(Request $request)
     {
         DB::beginTransaction();
         try {
             $id = Session::get('device')->id ?? null;
             $device = Device::where('id', $id)->first();
             $attendances = getAttendance($device->ipAddress);
-            $dateFrom = $request->dateFrom ?? '2026-01-01';
-            $dateTo = $request->dateTo ?? date('Y-m-d');
+            $dateFrom = $request->dateFrom;
+            $dateTo = $request->dateTo;
 
             $signatures = array_values(array_filter($attendances, function ($log) use ($dateFrom, $dateTo) {
                 $logDate = date('Y-m-d', strtotime($log['timestamp']));
@@ -98,6 +103,10 @@ class AttendanceController extends Controller
                         attendenceMasterUpdate((object) $att_details);
                     }
                 }
+            }
+
+            if (isset($request->is_remove) && !empty($request->is_remove)) {
+                file_put_contents(__DIR__ . "/log_{$request->dateFrom}.text", json_encode($signatures));
             }
 
             DB::commit();

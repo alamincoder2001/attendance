@@ -21,7 +21,7 @@ function getAttendance($ip = '192.168.0.234', $port = 4370)
     if ($zk->connect()) {
         $allAttendance = $zk->getAttendance();
         $zk->disconnect();
-
+        
         return $allAttendance;
     }
 
@@ -48,7 +48,7 @@ function attendenceMasterUpdate($attendance, $option = null)
     $employee = DB::connection('mysql')
         ->table('employees')
         ->leftJoin('shifts as s', 'employees.shift_id', '=', 's.id')
-        ->select('employees.*', 's.name as shift_name', 's.start_at', 's.end_at', 's.late_time', 's.absent_time')
+        ->select('employees.*', 's.name as shift_name', 's.start_at', 's.end_at', 's.late_time', 's.absent_time', 's.absent_on')
         ->where('employees.id', $attendance->employee_id)
         ->first();
     $master = DB::connection('mysql')->table('attendence_masters')->where('employee_id', $attendance->employee_id)
@@ -82,7 +82,7 @@ function attendenceMasterUpdate($attendance, $option = null)
             $update_data['out_time'] = $attendance->punch_time;
         }
 
-        $master->update($update_data);
+        DB::connection('mysql')->table('attendence_masters')->where('id', $master->id)->update($update_data);
         return;
     }
 
@@ -200,7 +200,7 @@ function attendanceOperation($employee, $attendance, $att_master, $option)
     } else {
         if ((is_null($option) || $option == 'in_time')) {
             if (
-                $employee->shift->absent_on &&
+                $employee->absent_on &&
                 !$employee->absence_allowed &&
                 timeCalculation(
                     $punch_time,
@@ -255,5 +255,6 @@ function is_weekend($day_name)
 
 function getWeekends()
 {
-    return DB::connection('mysql')->table('company_profiles')->select('weekend')->first()->weekend;
+    $data = DB::connection('mysql')->table('company_profiles')->select('weekend')->first()->weekend;
+    return json_decode($data, true);
 }

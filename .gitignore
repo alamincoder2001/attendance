@@ -4,6 +4,7 @@
 /laravel/storage/*.key
 /laravel/vendor
 /dist
+/install_software
 .env
 .env.backup
 .phpunit.result.cache

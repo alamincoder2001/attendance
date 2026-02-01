@@ -1,0 +1,19 @@
+====================================== Attendance Software Installation ============================
+1. xampp-7.4 install
+2. node js - 16 version install
+3. composer install
+
+4. software zip file unzip
+5. .env file update needed
+    -> IP address
+    -> Database name
+    -> Database username
+    -> Database password
+
+6.project directory তে ধুকে cmd open and "npm run build" command run korte hobe.
+
+
+
+বিশেষ নোটঃ Software must be window drive C তে রাখতে হবে। যদি C drive বাদে অন্য drive এ রাখা হয় তাহলে .env file a sqlite এর directory change করে দিতে হবে।
+
+আরেকটা ‍সমস্যা হইতে পারে সেটা হইতেছে php.ini file এ ;extension=sockets এই জায়গায় শুধু সেমিকোলন টা উঠাই দিতে হবে এবং ‍সেভ করতে হবে ফাইলটা।
